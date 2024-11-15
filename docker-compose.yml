@@ -2,14 +2,14 @@ version: "3.8"
 
 services:
   chat_backend:
-    image: mithunvasanth/chat-backend  # Pull image directly from Docker Hub
+    image: mithunvasanth/chat-backend:lawee # Pull image directly from Docker Hub
     ports:
       - "5213:5213"  
     environment:
       - PYTHONUNBUFFERED=1  
 
   frontend:
-    image: mithunvasanth/frontend  # Pull image directly from Docker Hub
+    image: mithunvasanth/frontend:frontend  # Pull image directly from Docker Hub
     ports:
       - "5261:80" 
     depends_on:
