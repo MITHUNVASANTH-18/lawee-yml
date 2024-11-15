@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  chat_backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: mithunvasanth/chat-backend
+    ports:
+      - "5213:5213"  
+    volumes:
+      - ./backend:/app  
+    environment:
+      - PYTHONUNBUFFERED=1  
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+    image: mithunvasanth/frontend
+
+    ports:
+      - "5261:80" 
+    depends_on:
+      - chat_backend 
+    volumes:
+      - ./frontend:/app
+
